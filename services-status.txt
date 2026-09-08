@@ -43,7 +43,7 @@ Runlevel: default
  irqbalance                                                        [  started  ]
  nohang                                                            [  started  ]
  power-profiles-daemon                                             [  started  ]
- scx_loader                                   [  started 1 day(s) 06:10:13 (0) ]
+ scx_loader                                   [  started 1 day(s) 06:11:18 (0) ]
  local                                                             [  started  ]
 Runlevel: nonetwork
  local                                                             [  started  ]
@@ -52,7 +52,7 @@ Runlevel: shutdown
  savecache                                                         [  stopped  ]
  mount-ro                                                          [  stopped  ]
 Dynamic Runlevel: hotplugged
- user.astral                                  [  started 1 day(s) 02:09:26 (0) ]
+ user.astral                                  [  started 1 day(s) 02:10:31 (0) ]
 Dynamic Runlevel: needed/wanted
  display-manager-setup                                             [  started  ]
 Dynamic Runlevel: manual

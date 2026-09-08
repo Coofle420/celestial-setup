@@ -1,8 +1,8 @@
 Portage 3.0.81.3 (python 3.14.7-final-0, default/linux/amd64/23.0/desktop, gcc-15, glibc-2.43-r2, 7.2.3-cachyos-dist x86_64)
 =================================================================
 System uname: Linux-7.2.3-cachyos-dist-x86_64-12th_Gen_Intel-R-_Core-TM-_i7-12700KF-with-glibc2.43
-KiB Mem:    32632364 total,  12637120 free
-KiB Swap:   50331640 total,  49937472 free
+KiB Mem:    32632364 total,  12589132 free
+KiB Swap:   50331640 total,  49937632 free
 Timestamp of repository gentoo: Tue, 08 Sep 2026 16:00:00 +0000
 Head commit of repository gentoo: 2c959cda90b0d3b7836470c6f73181e8407be66e
 Head commit of repository CachyOS-kernels: fadc10797ab1142b3882faf785bbe38f521a8c2b
@@ -45,10 +45,10 @@ gentoo
     sync-uri: rsync://rsync.gentoo.org/gentoo-portage
     priority: -1000
     volatile: False
-    sync-rsync-extra-opts: 
-    sync-rsync-verify-jobs: 1
     sync-rsync-verify-max-age: 3
     sync-rsync-verify-metamanifest: yes
+    sync-rsync-extra-opts: 
+    sync-rsync-verify-jobs: 1
 
 CachyOS-kernels
     location: /var/db/repos/CachyOS-kernels
