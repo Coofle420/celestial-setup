@@ -1,0 +1,155 @@
+# Noctalia v5 — ported from kenny@eeepy's NixOS home-manager config.
+# Machine-specific adaptations (OpenRC, Gentoo, this app set) are marked ADAPTED.
+# Tune live via Settings (Mod+Shift+,) — most keys hot-reload.
+
+[shell]
+font_family                     = "JetBrainsMono Nerd Font"
+launch_apps_as_systemd_services = false          # ADAPTED: OpenRC, no systemd user services
+corner_radius_scale             = 1.2
+
+[shell.panel]
+transparency_mode = "solid"
+
+[shell.shadow]
+alpha = 0.5
+
+[theme]
+mode           = "dark"
+source         = "custom"
+custom_palette = "Synthwave"
+
+[theme.templates]
+enable_builtin_templates = true
+builtin_ids = ["niri", "kitty", "gtk3", "gtk4", "qt", "kcolorscheme", "starship"]
+enable_community_templates = true
+community_ids = ["yazi"]
+
+[wallpaper]
+enabled = true
+
+[wallpaper.default]
+path = "/home/astral/.config/noctalia/assets/synthwave-grid.png"   # ADAPTED path
+
+# ── Never sleep ───────────────────────────────────────────────────────────────
+# Disable Noctalia's idle actions: no auto-lock, no screen-off, ever.
+[idle.behavior.lock]
+enabled = false
+[idle.behavior.screen-off]
+enabled = false
+
+[lockscreen]
+enabled            = true            # manual lock (Super+Alt+L) still works
+lock_before_suspend = false          # ADAPTED: box never suspends anyway
+
+# ── Bar ───────────────────────────────────────────────────────────────────────
+[bar.default]
+position          = "top"
+thickness         = 36
+background_opacity = 0.0
+shadow            = true
+border_width      = 0.0
+margin_edge       = 6
+margin_ends       = 8
+padding           = 8
+widget_spacing    = 6
+font_weight       = 600
+
+capsule           = true
+capsule_thickness = 0.82
+capsule_fill      = "surface"
+capsule_opacity   = 0.9
+capsule_padding   = 8.0
+
+start  = []
+center = ["distro_menu", "workspaces", "group:tools", "clock", "audio_visualizer", "tray", "group:status"]
+end    = []
+
+[[bar.default.capsule_group]]
+id             = "tools"
+members        = ["launcher", "settings", "screenshot", "caffeine", "nightlight"]
+widget_spacing = 4
+
+[[bar.default.capsule_group]]
+id             = "status"
+members        = ["notifications", "network", "dns_switcher", "bluetooth", "volume", "power_profile", "control-center", "session"]
+widget_spacing = 4
+
+# ── Widgets ───────────────────────────────────────────────────────────────────
+[widget.distro_menu]                              # ADAPTED: was nixos_menu
+type                  = "custom_button"
+custom_image          = "/home/astral/.config/noctalia/assets/gentoo-logo.png"
+custom_image_colorize = false                     # keep the real Gentoo colours
+tooltip               = "Applications"
+scale                 = 1.4
+
+[widget.distro_menu.actions]
+left   = "exec noctalia msg panel-toggle launcher"
+right  = "exec noctalia msg panel-toggle control-center"
+
+[widget.clock]
+format      = "{:%a %d %b   %H:%M}"
+color       = "tertiary"
+font_weight = 700
+
+[widget.tray]
+match_adjacent_spacing = false
+capsule                = false
+scale                  = 0.85
+
+[widget.network]
+show_label = false
+[widget.volume]
+show_label = false
+[widget.bluetooth]
+show_label = false
+
+[widget.dns_switcher]
+type       = "nightwatch75/dns-switcher:dns-switcher"
+show_label = false
+
+[widget.audio_visualizer]
+width   = 60
+bands   = 18
+color_1 = "primary"
+color_2 = "tertiary"
+
+[widget.workspaces]
+style          = "regular"
+focused_color  = "primary"
+occupied_color = "primary"
+empty_color    = "surface_variant"
+urgent_color   = "error"
+
+# ── Dock ──────────────────────────────────────────────────────────────────────
+[dock]
+enabled            = true
+background_opacity  = 0.0
+item_spacing        = 3
+# ADAPTED pins — apps that exist on this machine
+pinned = [
+    "distro",
+    "helium",
+    "kitty",
+    "basecamp",
+    "google-messages",
+    "com.obsproject.Studio",
+    "org.kde.kdenlive",
+    "steam",
+]
+
+# ── Plugins ───────────────────────────────────────────────────────────────────
+[plugins]
+enabled     = ["nightwatch75/dns-switcher"]
+auto_update = "all"
+
+[[plugins.source]]
+name     = "official"
+kind     = "git"
+enabled  = true
+location = "https://github.com/noctalia-dev/official-plugins"
+
+[[plugins.source]]
+name     = "community"
+kind     = "git"
+enabled  = true
+location = "https://github.com/noctalia-dev/community-plugins"

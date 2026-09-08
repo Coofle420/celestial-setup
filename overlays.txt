@@ -1,0 +1,5 @@
+Available repositories:
+  [65]  CachyOS-kernels * (https://github.com/Szowisz/CachyOS-kernels)
+  [142] gentoo * (https://gentoo.org/)
+  [164] guru * (https://wiki.gentoo.org/wiki/Project:GURU)
+  [376] steam-overlay * (https://github.com/anyc/steam-overlay)

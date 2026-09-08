@@ -1,0 +1,3 @@
+# i7-12700KF = intel_pstate: only 'performance' / 'powersave' exist.
+# 'performance' = no ramp-up latency (best for gaming). GameMode also forces it.
+START_OPTS="--governor performance"

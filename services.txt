@@ -1,0 +1,82 @@
+       NetworkManager |      default                           
+               agetty |                                        
+    ananicy-cpp.initd |                                        
+               binfmt | boot                                   
+            bluetooth |                                        
+             bootlogd |                                        
+             bootmisc | boot                                   
+              cgroups |                                 sysinit
+              chronyd |      default                           
+          consolefont |                                        
+             cpupower |                                        
+               cronie |      default                           
+                cupsd |                                        
+                 dbus | boot default                           
+                devfs |                                 sysinit
+        device-mapper |                                        
+               dhcpcd |      default                           
+      display-manager |      default                           
+ display-manager-setup |                                        
+              dmcrypt |                                        
+                dmesg |                                 sysinit
+              elogind | boot                                   
+                 fsck | boot                                   
+                 fuse |                                        
+           git-daemon |                                        
+                  gpm |                                        
+               hdparm |                                        
+             hostname | boot                                   
+              hwclock | boot                                   
+            ip6tables |                                        
+             iptables |                                        
+           irqbalance |      default                           
+              keymaps | boot                                   
+            killprocs |                        shutdown        
+    kmod-static-nodes |                                 sysinit
+                local |      default nonetwork                 
+           localmount | boot                                   
+             loopback | boot                                   
+         modemmanager |                                        
+              modules | boot                                   
+             mount-ro |                        shutdown        
+                 mtab | boot                                   
+           net-online |                                        
+           net.enp7s0 |      default                           
+               net.lo |                                        
+             netmount |      default                           
+               nohang |      default                           
+       nohang-desktop |                                        
+              numlock |                                        
+              osclock |                                        
+              pciparm |                                        
+ power-profiles-daemon |      default                           
+               procfs | boot                                   
+           pydoc-3.14 |                                        
+                 root | boot                                   
+               rsyncd |                                        
+             runsvdir |                                        
+            s6-svscan |                                        
+         save-keymaps | boot                                   
+    save-termencoding | boot                                   
+            savecache |                        shutdown        
+           scx_loader |      default                           
+                seatd |                                        
+              seedrng | boot                                   
+                 sshd |                                        
+                 swap | boot                                   
+              swclock |                                        
+   switcheroo-control |                                        
+               sysctl | boot                                   
+                sysfs |                                 sysinit
+             sysklogd |      default                           
+ systemd-tmpfiles-setup | boot                                   
+ systemd-tmpfiles-setup-dev |                                 sysinit
+         termencoding | boot                                   
+                 udev |                                 sysinit
+          udev-settle |                                        
+         udev-trigger |                                 sysinit
+                 user |                                        
+          user.astral |                                        
+       wpa_supplicant |                                        
+                  xdm |                                        
+            zram-init | boot                                   

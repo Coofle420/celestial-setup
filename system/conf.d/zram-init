@@ -1,0 +1,6 @@
+num_devices=1
+type0=swap
+size0=16384          # 16 GiB
+algo0=zstd
+labl0=zram0
+flag0=32767          # swap priority (beats the disk partition)

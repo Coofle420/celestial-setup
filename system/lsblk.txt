@@ -1,0 +1,14 @@
+NAME        FSTYPE FSVER LABEL      UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+sda                                                                                     
+└─sda1      ext4   1.0   Games 2    63aeac9b-8315-49a9-81cd-1ea32aa050ab  756.3G    12% /mnt/games2
+sdb                                                                                     
+└─sdb1      ext4   1.0   Games      f6473299-d8b5-4abf-98ef-74a6da9a21d8    6.8T     1% /mnt/games
+zram0       swap   1     zram0      693e3579-9d04-4b89-ab36-245dd1c807b6                [SWAP]
+nvme1n1                                                                                 
+├─nvme1n1p1 vfat   FAT32 EFI-SYSTEM 1A96-69FF                                           
+├─nvme1n1p2 ext4   1.0   boot       e77d283f-27b8-4f6c-a290-180cd9ef8c55                
+└─nvme1n1p3 btrfs        root       578f9e43-9496-4f8a-b72c-cf2e2a999deb                
+nvme0n1                                                                                 
+├─nvme0n1p1 vfat   FAT32            4616-62E5                             510.7M     0% /efi
+├─nvme0n1p2 swap   1                4417c818-6332-452d-9ff2-9f22af00836d                [SWAP]
+└─nvme0n1p3 btrfs                   d0daee76-c7a3-4709-82fd-a584174879d6  772.8G    14% /

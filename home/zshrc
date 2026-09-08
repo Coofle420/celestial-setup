@@ -1,0 +1,83 @@
+# ── zsh — ported from eeepy home.nix, adapted for Gentoo ──────────────────────
+
+# history
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt hist_ignore_dups hist_ignore_space share_history inc_append_history
+setopt autocd extendedglob nomatch interactivecomments
+
+# completion
+autoload -Uz compinit && compinit -d ~/.cache/zcompdump
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+[[ -d /usr/share/zsh/site-functions ]] && fpath=(/usr/share/zsh/site-functions $fpath)
+
+# ── aliases (Gentoo equivalents of the nix* ones) ─────────────────────────────
+alias ll='ls -lah --color=auto'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# Portage — read-only (run as astral, no password)
+alias ems='eix'                                    # search (eix is faster than emerge -s)
+alias emp='emerge -pv'                             # pretend an install:  emp firefox
+alias empreview='emerge -pvuDN --changed-use --with-bdeps=y @world'   # preview a full update
+alias emq='qlist -Iv'                              # list installed pkgs / versions
+alias emlog='tail -f /var/log/emerge.log'
+alias emwho='qlop -d yesterday'                    # what merged recently
+
+# Portage — root (each prompts for the doas password)
+alias emsync='doas emaint sync -a'                 # sync all repos + overlays
+alias emi='doas emerge -av'                        # install:  emi neovim
+alias eminstall='doas emerge -av'                  # (long name, kept for muscle memory)
+alias emrm='doas emerge -avc'                      # remove + depclean:  emrm neovim
+alias emremove='doas emerge -avc'
+alias emworld='doas emerge -avuDN --changed-use --with-bdeps=y --keep-going @world'
+alias emclean='doas emerge -avc && doas emerge -av @preserved-rebuild'
+alias emcfg='doas etc-update'                      # merge config updates after an emerge
+alias emnews='eselect news read'
+alias news='eselect news read'
+alias world='doas $EDITOR /var/lib/portage/world'
+
+# plain-English names
+alias install='doas emerge -av'                    # install <pkg>
+alias remove='doas emerge -avc'                    # remove <pkg>
+alias search='eix'                                 # search <term>
+
+# update — sync repos, show news, then the @world upgrade (emerge -a asks before merging)
+update() {
+    doas emaint sync -a || return
+    eselect news read
+    emerge -pvuDN --changed-use --with-bdeps=y @world || return
+    echo "\n── the above is the plan; you'll be asked again before anything merges ──\n"
+    doas emerge -avuDN --changed-use --with-bdeps=y --keep-going @world
+    echo "\nDone. If Portage mentioned config updates, run:  emcfg"
+}
+alias emupdate='update'
+
+# ── keybinds (from home.nix initContent) ─────────────────────────────────────
+bindkey -e
+bindkey '^H'      backward-kill-word      # ctrl+backspace
+bindkey '^[[3;5~' kill-word               # ctrl+del
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+
+# ── plugins ──────────────────────────────────────────────────────────────────
+# fast-syntax-highlighting (git-cloned by ~/setup/apps.sh; falls back to the
+# packaged zsh-syntax-highlighting if F-Sy-H isn't there)
+if [[ -f ~/.config/zsh/plugins/F-Sy-H/F-Sy-H.plugin.zsh ]]; then
+    source ~/.config/zsh/plugins/F-Sy-H/F-Sy-H.plugin.zsh
+elif [[ -f /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+fi
+[[ -f /usr/share/zsh/site-functions/zsh-autosuggestions.zsh ]] && \
+    source /usr/share/zsh/site-functions/zsh-autosuggestions.zsh
+
+# ── integrations ─────────────────────────────────────────────────────────────
+command -v starship >/dev/null && eval "$(starship init zsh)"
+command -v zoxide   >/dev/null && eval "$(zoxide init zsh)"
+[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
+[[ -f /usr/share/fzf/completion.zsh ]]   && source /usr/share/fzf/completion.zsh
+
+# fastfetch on launch (from home.nix)
+command -v fastfetch >/dev/null && fastfetch

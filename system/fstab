@@ -1,0 +1,28 @@
+# /etc/fstab: static file system information.
+#
+# See the manpage fstab(5) for more information.
+#
+# NOTE: The root filesystem should have a pass number of either 0 or 1.
+#       All other filesystems should have a pass number of 0 or greater than 1.
+#
+# NOTE: Even though we list ext4 as the type here, it will work with ext2/ext3
+#       filesystems.  This just tells the kernel to use the ext4 driver.
+#
+# NOTE: You can use full paths to devices like /dev/sda3, but it is often
+#       more reliable to use filesystem labels or UUIDs. See your filesystem
+#       documentation for details on setting a label. To obtain the UUID, use
+#       the blkid(8) command.
+
+
+# --- EFI ---
+UUID=4616-62E5    /efi    vfat    defaults,noatime    0 2
+
+# --- swap ---
+UUID=4417c818-6332-452d-9ff2-9f22af00836d    none    swap    sw    0 0
+
+# --- root (btrfs) ---
+UUID=d0daee76-c7a3-4709-82fd-a584174879d6    /    btrfs    noatime,compress=zstd    0 0
+
+# --- game drives ---
+UUID=f6473299-d8b5-4abf-98ef-74a6da9a21d8    /mnt/games      ext4    noatime,nofail    0 2
+UUID=63aeac9b-8315-49a9-81cd-1ea32aa050ab    /mnt/games2     ext4    noatime,nofail    0 2

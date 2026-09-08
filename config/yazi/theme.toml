@@ -1,0 +1,4 @@
+# use the Noctalia-generated flavor (kept in sync with the shell palette)
+[flavor]
+dark = "noctalia"
+light = "noctalia"

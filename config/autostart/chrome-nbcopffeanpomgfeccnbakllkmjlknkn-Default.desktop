@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Stephan Stavrakis - Basecamp
+Exec=/opt/helium/helium --profile-directory=Default --app-id=nbcopffeanpomgfeccnbakllkmjlknkn --app-run-on-os-login-mode=windowed
+Icon=chrome-nbcopffeanpomgfeccnbakllkmjlknkn-Default
+StartupWMClass=crx_nbcopffeanpomgfeccnbakllkmjlknkn
+Actions=My-tasks;Out-of-Office
+
+[Desktop Action My-tasks]
+Name=My tasks
+Exec=/opt/helium/helium --profile-directory=Default --app-id=nbcopffeanpomgfeccnbakllkmjlknkn --app-run-on-os-login-mode=windowed --app-launch-url-for-shortcuts-menu-item=https://app.basecamp.com/3108250/my/assignments
+
+[Desktop Action Out-of-Office]
+Name=Out of Office
+Exec=/opt/helium/helium --profile-directory=Default --app-id=nbcopffeanpomgfeccnbakllkmjlknkn --app-run-on-os-login-mode=windowed --app-launch-url-for-shortcuts-menu-item=https://app.basecamp.com/3108250/my/out_of_office

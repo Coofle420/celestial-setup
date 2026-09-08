@@ -1,0 +1,37 @@
+# niri / Noctalia gaming desktop.
+
+# GURU and steam-overlay are testing-only repos by nature — accept ~amd64 for
+# anything pulled from them rather than chasing transitive deps one by one.
+*/*::guru ~amd64
+*/*::steam-overlay ~amd64
+
+# noctalia v5 betas ship with NO keyword upstream -> needs ** (any keyword)
+=gui-apps/noctalia-5.0.0_beta9 **
+
+# --- ::gentoo packages that are still ~amd64 ---
+gui-wm/gamescope ~amd64
+games-util/gamemode ~amd64
+games-util/lutris ~amd64
+gui-apps/wtype ~amd64
+dev-cpp/sdbus-c++ ~amd64
+media-video/obs-studio ~amd64
+sys-libs/libudev-compat ~amd64
+games-util/game-device-udev-rules ~amd64
+media-gfx/vkBasalt ~amd64
+dev-python/moddb ~amd64
+dev-python/pypresence ~amd64
+
+# CachyOS kernel overlay
+*/*::CachyOS-kernels ~amd64
+sys-kernel/cachyos-kernel-bin ~amd64
+
+app-admin/cachyos-settings ~amd64
+sys-kernel/scx ~amd64
+media-plugins/obs-vkcapture ~amd64
+media-plugins/obs-pipewire-audio-capture ~amd64
+media-plugins/obs-move-transition ~amd64
+media-plugins/obs-source-clone ~amd64
+
+app-shells/zoxide ~amd64
+app-shells/zsh ~amd64
+app-shells/zsh-autosuggestions ~amd64

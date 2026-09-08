@@ -1,0 +1,8 @@
+export EDITOR=nvim
+export VISUAL=nvim
+export TERMINAL=kitty
+export BROWSER=helium
+export MANPAGER='nvim +Man!'
+export PATH="$HOME/.local/bin:$PATH"
+# Qt apps follow the GTK/dark theme
+export QT_QPA_PLATFORMTHEME=gtk3

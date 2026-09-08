@@ -1,0 +1,22 @@
+# Never commit — secrets / bulk / churn
+*_history
+.*_history
+*history*
+*.mp4
+*.mkv
+*.log
+*token*
+*cookie*
+*.key
+*.gpg
+*.kbx
+.claude.json
+config/**/logs/
+config/**/Cache/
+config/**/cache/
+config/**/Cache/
+config/obs-studio/logs/
+config/obs-studio/profiler_data/
+config/obs-studio/crashes/
+# OBS stream key lives here if streaming is ever configured — keep it out
+config/obs-studio/basic/profiles/*/service.json

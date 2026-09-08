@@ -1,0 +1,41 @@
+# niri / Noctalia gaming desktop — essential USE only.
+# (mesa[vulkan], pipewire[sound-server], sddm[elogind], dbus, screencast
+#  are already provided by the profile/global USE — not repeated here.)
+
+# niri: enable PipeWire screencast (OBS / screen-share). Pulls xdg-desktop-portal-gnome.
+gui-wm/niri screencast
+
+# libseat: all backends so a Wayland session works with or without the seatd daemon.
+sys-auth/seatd server builtin elogind
+
+# route native-ALSA apps through PipeWire
+media-video/pipewire pipewire-alsa
+
+# OBS: PipeWire capture path
+media-video/obs-studio pipewire
+
+# gamescope: PipeWire audio passthrough
+gui-wm/gamescope pipewire
+
+# wine-proton: use wow64 (64-bit build that runs 32-bit apps) — must explicitly
+# drop abi_x86_32 here since make.conf sets it globally; REQUIRED_USE forbids
+# wow64 + abi_x86_32 together.
+app-emulation/wine-proton -abi_x86_32
+
+# Steam client under Wayland
+games-util/steam-launcher wayland
+
+# kdenlive wants an OpenCV built with the contrib/tracking modules
+media-libs/opencv features2d contribdnn contrib
+
+# obs / kdenlive codec coverage
+media-video/ffmpeg opus vpx x264 x265 vaapi
+
+# CachyOS source kernel: skip PGO infra (needs external profiles = no gain)
+sys-kernel/cachyos-kernel -autofdo -propeller
+media-libs/mesa vaapi
+media-video/ffmpeg vaapi
+media-libs/mesa vaapi
+media-video/ffmpeg vaapi
+media-fonts/nerdfonts jetbrainsmono
+media-video/obs-studio browser v4l vlc websocket python lua

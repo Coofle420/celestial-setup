@@ -1,0 +1,21 @@
+[Default Applications]
+text/html=helium.desktop
+x-scheme-handler/http=helium.desktop
+x-scheme-handler/https=helium.desktop
+x-scheme-handler/about=helium.desktop
+x-scheme-handler/unknown=helium.desktop
+application/pdf=helium.desktop
+image/png=imv.desktop
+image/jpeg=imv.desktop
+video/mp4=mpv.desktop
+video/x-matroska=mpv.desktop
+audio/mpeg=mpv.desktop
+inode/directory=thunar.desktop
+x-scheme-handler/file=thunar.desktop
+x-scheme-handler/trash=thunar.desktop
+x-scheme-handler/computer=thunar.desktop
+
+[Added Associations]
+x-scheme-handler/http=helium.desktop
+x-scheme-handler/https=helium.desktop
+inode/directory=thunar.desktop;yazi.desktop;

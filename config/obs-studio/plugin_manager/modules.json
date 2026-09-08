@@ -1,0 +1,65 @@
+[
+    {
+        "display_name": "Source Clone",
+        "enabled": true,
+        "encoders": [],
+        "id": "",
+        "module_name": "source-clone",
+        "outputs": [],
+        "services": [],
+        "sources": [
+            "source-clone",
+            "source_clone_audio_wrapper_source"
+        ],
+        "version": ""
+    },
+    {
+        "display_name": "Move Transition",
+        "enabled": true,
+        "encoders": [],
+        "id": "",
+        "module_name": "move-transition",
+        "outputs": [],
+        "services": [],
+        "sources": [
+            "move_transition",
+            "move_transition_override_filter",
+            "move_source_filter",
+            "move_source_swap_filter",
+            "move_value_filter",
+            "move_audio_value_filter",
+            "audio_move_filter",
+            "move_action_filter",
+            "move_audio_action_filter"
+        ],
+        "version": ""
+    },
+    {
+        "display_name": "linux-vkcapture",
+        "enabled": true,
+        "encoders": [],
+        "id": "",
+        "module_name": "linux-vkcapture",
+        "outputs": [],
+        "services": [],
+        "sources": [
+            "vkcapture-source"
+        ],
+        "version": ""
+    },
+    {
+        "display_name": "",
+        "enabled": true,
+        "encoders": [],
+        "id": "",
+        "module_name": "linux-pipewire-audio",
+        "outputs": [],
+        "services": [],
+        "sources": [
+            "pipewire_audio_input_capture",
+            "pipewire_audio_output_capture",
+            "pipewire_audio_application_capture"
+        ],
+        "version": ""
+    }
+]
