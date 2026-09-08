@@ -1,0 +1,55 @@
+# ── zsh — ported from eeepy home.nix, adapted for Gentoo ──────────────────────
+
+# history
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt hist_ignore_dups hist_ignore_space share_history inc_append_history
+setopt autocd extendedglob nomatch interactivecomments
+
+# completion
+autoload -Uz compinit && compinit -d ~/.cache/zcompdump
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+[[ -d /usr/share/zsh/site-functions ]] && fpath=(/usr/share/zsh/site-functions $fpath)
+
+# ── aliases (Gentoo equivalents of the nix* ones) ─────────────────────────────
+alias ll='ls -lah --color=auto'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias emsync='doas emerge --sync'
+alias emworld='doas emerge -avuDN @world'
+alias eminstall='doas emerge -av'
+alias emremove='doas emerge -av --depclean'
+alias emsearch='emerge -s'
+alias emclean='doas emerge -a --depclean && doas emerge -a @preserved-rebuild'
+alias emlog='tail -f /var/log/emerge.log'
+alias world='doas nano /var/lib/portage/world'
+alias news='eselect news read'
+
+# ── keybinds (from home.nix initContent) ─────────────────────────────────────
+bindkey -e
+bindkey '^H'      backward-kill-word      # ctrl+backspace
+bindkey '^[[3;5~' kill-word               # ctrl+del
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+
+# ── plugins ──────────────────────────────────────────────────────────────────
+# fast-syntax-highlighting (git-cloned by ~/setup/apps.sh; falls back to the
+# packaged zsh-syntax-highlighting if F-Sy-H isn't there)
+if [[ -f ~/.config/zsh/plugins/F-Sy-H/F-Sy-H.plugin.zsh ]]; then
+    source ~/.config/zsh/plugins/F-Sy-H/F-Sy-H.plugin.zsh
+elif [[ -f /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+fi
+[[ -f /usr/share/zsh/site-functions/zsh-autosuggestions.zsh ]] && \
+    source /usr/share/zsh/site-functions/zsh-autosuggestions.zsh
+
+# ── integrations ─────────────────────────────────────────────────────────────
+command -v starship >/dev/null && eval "$(starship init zsh)"
+command -v zoxide   >/dev/null && eval "$(zoxide init zsh)"
+[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
+[[ -f /usr/share/fzf/completion.zsh ]]   && source /usr/share/fzf/completion.zsh
+
+# fastfetch on launch (from home.nix)
+command -v fastfetch >/dev/null && fastfetch
